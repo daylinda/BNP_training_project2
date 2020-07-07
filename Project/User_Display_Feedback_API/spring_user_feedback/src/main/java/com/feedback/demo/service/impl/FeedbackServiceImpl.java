@@ -89,10 +89,27 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Override
 	public List<Feedback> getFeedbackByUserEmail(String userEmail) throws BusinessException {
 		
+		if(!userEmail.matches("[a-z0-9._]{1,}@[a-z]{1,}\\.com")){
+			throw new BusinessException("Enter Valid Email ID");
+		}
+		
+		
 		List<Feedback> list = dao.findFeedbackByUserEmail(userEmail);
 		
 		if(list.isEmpty()) {
 			throw new BusinessException("No feedback of User with emailID "+userEmail+" available");
+		}
+		
+		return list ;
+	}
+
+	@Override
+	public List<Feedback> getFeedbackByRatings(int ratings) throws BusinessException {	
+		
+		List<Feedback> list = dao.findFeedbackByRatings(ratings);
+		
+		if(list.isEmpty()) {
+			throw new BusinessException("No feedback with ratings "+ratings+" available");
 		}
 		
 		return list ;

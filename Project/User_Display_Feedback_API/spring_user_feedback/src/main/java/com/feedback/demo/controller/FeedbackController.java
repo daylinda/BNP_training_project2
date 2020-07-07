@@ -100,6 +100,20 @@ public class FeedbackController  {
 		return new ResponseEntity<>(feedbackList,HttpStatus.OK);
 	}
 	
+	@GetMapping("/feedbacks/ratings/{ratings}")
+	public ResponseEntity<List<Feedback>> getFeedbackByRatings(@PathVariable("ratings") int ratings) throws BusinessException {
+		List<Feedback> feedbackList;
+		try {
+			feedbackList = service.getFeedbackByRatings(ratings);
+		} catch (BusinessException e) {
+			map=new LinkedMultiValueMap<>();
+			map.add("message", e.getMessage());
+			return new ResponseEntity<>(null,map, HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(feedbackList,HttpStatus.OK);
+	}
+	
 	
 	
 	

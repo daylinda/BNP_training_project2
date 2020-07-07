@@ -14,5 +14,6 @@ public interface FeedbackService {
 	public Feedback deleteFeedback(int id)throws BusinessException;
 	public List<Feedback> getFeedbackByUserName(String userName)throws BusinessException;
 	public List<Feedback> getFeedbackByUserEmail(String userEmail)throws BusinessException;
+	public List<Feedback> getFeedbackByRatings(int ratings)throws BusinessException;
 
 }

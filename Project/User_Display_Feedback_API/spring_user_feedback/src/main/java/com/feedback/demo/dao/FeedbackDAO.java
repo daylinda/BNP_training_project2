@@ -12,7 +12,7 @@ public interface FeedbackDAO extends JpaRepository<Feedback,Integer>{
 	
 	public List<Feedback> findFeedbackByUserName(String userName);
 	public List<Feedback> findFeedbackByUserEmail(String userEmail);
-	
+	public List<Feedback> findFeedbackByRatings(int ratings);
 	
 	
 
