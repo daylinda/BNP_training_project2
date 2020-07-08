@@ -55,7 +55,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public Feedback deleteFeedback(int id) throws BusinessException{
+	public String deleteFeedback(int id) throws BusinessException{
 		
 		
 		if(id<=0) {
@@ -70,7 +70,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 		
 		dao.deleteById(id);
 		
-		return feedback;
+		return "Feedback deleted successfully";
 		
 	}
 

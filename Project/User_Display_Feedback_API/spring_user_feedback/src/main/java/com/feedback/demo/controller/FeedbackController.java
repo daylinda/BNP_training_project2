@@ -59,14 +59,14 @@ public class FeedbackController  {
 	}
 
 	@DeleteMapping("/feedback/{id}")
-	public ResponseEntity<Feedback> deleteFeedback(@PathVariable("id") int id)  {
+	public ResponseEntity<String> deleteFeedback(@PathVariable("id") int id)  {
 		
 		try {
-			return new ResponseEntity<Feedback>(service.deleteFeedback(id),HttpStatus.OK);
+			return new ResponseEntity<String>(service.deleteFeedback(id),HttpStatus.OK);
 		} catch (BusinessException e) {
 			map=new LinkedMultiValueMap<>();
 			map.add("message", e.getMessage());
-			return new ResponseEntity<Feedback>(null,map, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>(null,map, HttpStatus.NOT_FOUND);
 		}
 	
 	}
