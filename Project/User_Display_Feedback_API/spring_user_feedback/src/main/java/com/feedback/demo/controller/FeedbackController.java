@@ -53,9 +53,15 @@ public class FeedbackController  {
 	}
 
 	@PutMapping("/feedback")
-	public Feedback updateFeedback(@RequestBody Feedback feedback) {
+	public ResponseEntity<Feedback> updateFeedback(@RequestBody Feedback feedback) {
+		try {
+			return new ResponseEntity<Feedback>(service.updateFeedback(feedback),HttpStatus.OK);
+		} catch (BusinessException e) {
+			map=new LinkedMultiValueMap<>();
+			map.add("message", e.getMessage());
+			return new ResponseEntity<Feedback>(null,map, HttpStatus.NOT_FOUND);
+		}
 		
-		return service.updateFeedback(feedback);
 	}
 
 	@DeleteMapping("/feedback/{id}")

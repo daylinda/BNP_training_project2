@@ -49,7 +49,14 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public Feedback updateFeedback(Feedback feedback){
+	public Feedback updateFeedback(Feedback feedback)throws BusinessException{
+		Feedback feedbackCheck = null;
+		
+		try {
+			feedbackCheck = dao.findById(feedback.getId()).get();
+		}catch(NoSuchElementException e) {
+			throw new BusinessException("No Feedback found for id "+feedback.getId());
+		}
 			
 		return dao.save(feedback);
 	}

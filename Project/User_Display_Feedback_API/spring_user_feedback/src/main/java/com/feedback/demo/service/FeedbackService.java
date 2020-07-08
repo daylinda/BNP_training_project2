@@ -10,7 +10,7 @@ public interface FeedbackService {
 	public Feedback createFeedback(Feedback feedback);
 	public List<Feedback> getAllFeedback();
 	public Feedback getFeedbackById(int id)throws BusinessException;
-	public Feedback updateFeedback(Feedback feedback);
+	public Feedback updateFeedback(Feedback feedback) throws BusinessException;
 	public String deleteFeedback(int id)throws BusinessException;
 	public List<Feedback> getFeedbackByUserName(String userName)throws BusinessException;
 	public List<Feedback> getFeedbackByUserEmail(String userEmail)throws BusinessException;
